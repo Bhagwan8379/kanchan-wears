@@ -1,0 +1,34 @@
+@import "tailwindcss";
+
+
+@layer utilities {
+    @keyframes scroll-up {
+        50% {
+            transform: translateY(50%);
+        }
+
+        50% {
+            transform: translateY(-50%);
+        }
+    }
+
+    @keyframes scroll-down {
+        50% {
+            transform: translateY(-50%);
+        }
+
+        50% {
+            transform: translateY(50%);
+        }
+    }
+
+    .animate-scroll-up {
+        animation: scroll-up 40s linear infinite reverse;
+    }
+
+
+
+    .animate-scroll-down {
+        animation: scroll-down 40s linear infinite reverse;
+    }
+}
