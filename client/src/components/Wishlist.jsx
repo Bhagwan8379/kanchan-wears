@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { Heart, ShoppingBag, X, ChevronRight } from "lucide-react";
+import { Heart, ShoppingBag, X, ChevronRight, ChevronLeft } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 
 const Wishlist = () => {
@@ -152,7 +152,7 @@ const Wishlist = () => {
                         className="mt-8 text-center"
                     >
                         <a
-                            href="#"
+                            href=""
                             className="inline-flex items-center text-pink-500 hover:text-pink-600 font-medium text-lg"
                         >
                             Continue Shopping

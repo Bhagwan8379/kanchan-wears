@@ -12,6 +12,7 @@ import Profile from './components/Profile'
 import Login from './components/Login'
 import { Toaster } from 'sonner'
 import Contact from './components/Contact'
+import NotFound from './share/NotFound'
 // import Profile from './components/Profile'
 
 const App = () => {
@@ -30,7 +31,7 @@ const App = () => {
           <Route path='/profile' element={<Profile />} />
           <Route path='/login' element={<Login />} />
           <Route path='/contact' element={<Contact />} />
-          <Route path='*' element={<h1>Page Not Found</h1>} />
+          <Route path='*' element={<NotFound />} />
         </Routes>
       </BrowserRouter>
 

@@ -1,20 +1,19 @@
-import { useState, useEffect, useRef } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { Formik, Form, Field, ErrorMessage } from 'formik';
-import * as Yup from 'yup';
-import clsx from 'clsx';
-import { useNavigate } from 'react-router-dom';
-import confetti from 'canvas-confetti';
-import { useLoginUserMutation } from '../redux/api/authApi';
+import { useState, useEffect, useRef } from 'react'
+import { motion, AnimatePresence } from 'framer-motion'
+import { Formik, Form, Field, ErrorMessage } from 'formik'
+import * as Yup from 'yup'
+import clsx from 'clsx'
+import { useNavigate } from 'react-router-dom'
+import confetti from 'canvas-confetti'
+import { useLoginUserMutation } from '../redux/api/authApi'
 
 const Login = () => {
     const [LoginUser, { isSuccess, isLoading, isError }] = useLoginUserMutation()
-    const [isLogin, setIsLogin] = useState(true);
-    const [isSubmitting, setIsSubmitting] = useState(false);
-    const navigate = useNavigate();
-    const canvasRef = useRef(null);
+    const [isLogin, setIsLogin] = useState(true)
+    const [isSubmitting, setIsSubmitting] = useState(false)
+    const navigate = useNavigate()
+    const canvasRef = useRef(null)
 
-    // 🎉 Trigger confetti on mount
     useEffect(() => {
         if (canvasRef.current) {
             const myConfetti = confetti.create(canvasRef.current, {
@@ -49,7 +48,7 @@ const Login = () => {
         setIsSubmitting(true);
         try {
             await new Promise(resolve => setTimeout(resolve, 1500));
-            navigate('/admin');
+            // navigate('/customer');
         } catch (error) {
             console.error('Error:', error);
         } finally {
