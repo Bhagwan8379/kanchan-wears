@@ -208,7 +208,7 @@ const Navbar = () => {
         <nav className="w-full fixed top-0 z-50 bg-white shadow-sm border-b border-pink-100">
             {/* Top VIP Banner */}
             <div className="bg-gradient-to-r from-pink-600 to-pink-400 text-white text-xs py-1 px-4 text-center">
-                VIP MEMBERS GET 20% OFF + FREE EXPRESS SHIPPING
+                MEMBERS GET 20% OFF + FREE EXPRESS SHIPPING
             </div>
 
             {/* Main Navigation */}
