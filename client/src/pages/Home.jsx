@@ -8,7 +8,9 @@ import video3 from '../assets/video3.mp4';
 import videos4 from '../assets/videos4.mp4';
 import {
     Mail, Phone, MapPin, Youtube, X, User, Lock, Instagram, Facebook, Twitter,
-    Linkedin, MessageCircle
+    Linkedin, MessageCircle,
+    MessageSquare,
+    MessageCircleCode
 } from 'lucide-react';
 
 
@@ -32,7 +34,7 @@ const Home = () => {
                 initial={{ y: 100, opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}
                 transition={{ delay: 0.5 }}
-                className="fixed bottom-6 right-6 z-50"
+                className="fixed md:bottom-15 bottom-6  right-6 z-50"
             >
                 <motion.button
                     whileHover={{ scale: 1.05, backgroundColor: "#EC4899" }}
@@ -927,8 +929,10 @@ const Footer = () => {
                     <p>
                         &copy; {new Date().getFullYear()} Kanchan Wear. All rights reserved.
                     </p>
-                    <p onClick={sendWhatsAppMessage} className=" text-center mt-4 md:mt-0 cursor-pointer">Design By Bhagwan Gire</p>
-
+                    <div className="flex justify-between items-center gap-2 mt-2 md:mt-0  ">
+                        <p onClick={sendWhatsAppMessage} className=" text-center text-pink-200 cursor-pointer">Design & Developed By Bhagwan Gire</p>
+                        <Mail size={15} className="md:mt-1 text-rose-400 " />
+                    </div>
                     <div className="flex space-x-6 mt-2 md:mt-0">
                         <button
                             onClick={() => setIsOpen(true)}
