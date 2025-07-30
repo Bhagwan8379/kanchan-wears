@@ -297,220 +297,222 @@ const Hero = () => {
                     ))}
                 </div>
 
-                <div className="relative z-10 pt-24 pb-40 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
-                    <motion.div
-                        className="flex flex-col lg:flex-row items-center justify-between gap-12"
-                        initial="hidden"
-                        animate="visible"
-                        variants={staggerContainer}
-                    >
-                        {/* Text Content */}
-                        <div className="lg:w-1/2 z-20">
-                            <motion.div
-                                className="relative pl-8 border-l-4"
-                                style={{ borderColor: COLORS.primary.medium }}
-                                variants={fadeInUp}
-                                custom={0}
-                            >
-                                <motion.span
-                                    className="block text-4xl sm:text-5xl font-serif italic tracking-wider"
-                                    style={{ color: COLORS.primary.medium }}
-                                    variants={textGlow}
-                                >
-                                    Elegance Redefined
-                                </motion.span>
-
-                                <motion.h1
-                                    className="mt-2 text-5xl sm:text-6xl md:text-7xl font-bold tracking-tight"
-                                    style={{ color: COLORS.neutral.dark }}
-                                    variants={fadeInUp}
-                                    custom={1}
-                                >
-                                    Kanchan <span style={{ color: COLORS.primary.dark }}>Wear</span>
-                                </motion.h1>
-
-                                <motion.p
-                                    className="mt-6 text-xl font-medium leading-relaxed"
-                                    style={{ color: COLORS.neutral.dark }}
-                                    variants={fadeInUp}
-                                    custom={1.5}
-                                >
-                                    Discover our exclusive collection of women's fashion that blends contemporary style with timeless elegance.
-                                </motion.p>
-
+                <div className='flex justify-between'>
+                    <div className="relative z-20 pt-24 pb-40 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+                        <motion.div
+                            className="flex flex-col lg:flex-row items-center justify-between"
+                            initial="hidden"
+                            animate="visible"
+                            variants={staggerContainer}
+                        >
+                            {/* Text Content */}
+                            <div className="lg:w-1/2 z-50">
                                 <motion.div
-                                    className="mt-10 flex flex-wrap gap-4"
+                                    className="relative pl-8 border-l-4"
+                                    style={{ borderColor: COLORS.primary.medium }}
                                     variants={fadeInUp}
-                                    custom={2}
+                                    custom={0}
                                 >
-                                    <motion.a
-                                        whileHover={{
-                                            scale: 1.05,
-                                            boxShadow: `0px 8px 25px ${COLORS.primary.light}50`
-                                        }}
-                                        whileTap={{ scale: 0.95 }}
-                                        href="/shop"
-                                        className="px-8 py-4 rounded-full text-white font-medium text-lg shadow-lg"
-                                        style={{
-                                            background: `linear-gradient(135deg, ${COLORS.primary.medium}, ${COLORS.primary.dark})`
-                                        }}
+                                    <motion.span
+                                        className="block text-4xl sm:text-5xl font-serif italic tracking-wider"
+                                        style={{ color: COLORS.primary.medium }}
+                                        variants={textGlow}
                                     >
-                                        Shop Now
-                                        <svg className="ml-3 w-5 h-5 inline" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7" />
-                                        </svg>
-                                    </motion.a>
+                                        Elegance Redefined
+                                    </motion.span>
 
-                                    <motion.a
-                                        whileHover={{
-                                            scale: 1.05,
-                                            boxShadow: `0px 8px 25px ${COLORS.secondary.light}30`
-                                        }}
-                                        whileTap={{ scale: 0.95 }}
-                                        href="/collections"
-                                        className="px-8 py-4 hidden md:flex rounded-full font-medium text-lg shadow-md"
-                                        style={{
-                                            backgroundColor: 'white',
-                                            border: `2px solid ${COLORS.neutral.medium}`,
-                                            color: COLORS.neutral.dark
-                                        }}
+                                    <motion.h1
+                                        className="mt-2 text-5xl sm:text-6xl md:text-7xl font-bold tracking-tight"
+                                        style={{ color: COLORS.neutral.dark }}
+                                        variants={fadeInUp}
+                                        custom={1}
                                     >
-                                        View Collections
-                                    </motion.a>
-                                </motion.div>
+                                        Kanchan <span style={{ color: COLORS.primary.dark }}>Wear</span>
+                                    </motion.h1>
 
-                                <motion.div
-                                    className="mt-12 flex items-center gap-6"
-                                    variants={fadeInUp}
-                                    custom={2.5}
-                                >
-                                    <div className="flex -space-x-4">
-                                        {IMAGES.models.map((model, i) => (
-                                            <motion.img
-                                                key={i}
-                                                src={model}
-                                                alt={`Happy customer ${i}`}
-                                                className="w-12 h-12 rounded-full border-2 border-white shadow-md"
-                                                whileHover={{ scale: 1.1, zIndex: 10 }}
-                                                transition={{ type: "spring", stiffness: 300 }}
-                                            />
-                                        ))}
-                                    </div>
-                                    <div style={{ color: COLORS.neutral.dark }}>
-                                        <p className="font-medium">Loved by 10,000+ customers</p>
-                                        <div className="flex items-center mt-1">
-                                            {[...Array(5)].map((_, i) => (
-                                                <svg key={i} className="w-5 h-5" style={{ color: COLORS.accent }} fill="currentColor" viewBox="0 0 20 20">
-                                                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                                                </svg>
+                                    <motion.p
+                                        className="mt-6 text-xl font-medium leading-relaxed"
+                                        style={{ color: COLORS.neutral.dark }}
+                                        variants={fadeInUp}
+                                        custom={1.5}
+                                    >
+                                        Discover our exclusive collection of women's fashion that blends contemporary style with timeless elegance.
+                                    </motion.p>
+
+                                    <motion.div
+                                        className="mt-10 flex flex-wrap gap-4"
+                                        variants={fadeInUp}
+                                        custom={2}
+                                    >
+                                        <motion.a
+                                            whileHover={{
+                                                scale: 1.05,
+                                                boxShadow: `0px 8px 25px ${COLORS.primary.light}50`
+                                            }}
+                                            whileTap={{ scale: 0.95 }}
+                                            href="/shop"
+                                            className="px-8 py-4 rounded-full text-white font-medium text-lg shadow-lg"
+                                            style={{
+                                                background: `linear-gradient(135deg, ${COLORS.primary.medium}, ${COLORS.primary.dark})`
+                                            }}
+                                        >
+                                            Shop Now
+                                            <svg className="ml-3 w-5 h-5 inline" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7" />
+                                            </svg>
+                                        </motion.a>
+
+                                        <motion.a
+                                            whileHover={{
+                                                scale: 1.05,
+                                                boxShadow: `0px 8px 25px ${COLORS.secondary.light}30`
+                                            }}
+                                            whileTap={{ scale: 0.95 }}
+                                            href="/collections"
+                                            className="px-8 py-4 hidden md:flex rounded-full font-medium text-lg shadow-md"
+                                            style={{
+                                                backgroundColor: 'white',
+                                                border: `2px solid ${COLORS.neutral.medium}`,
+                                                color: COLORS.neutral.dark
+                                            }}
+                                        >
+                                            View Collections
+                                        </motion.a>
+                                    </motion.div>
+
+                                    <motion.div
+                                        className="mt-12 flex items-center gap-6"
+                                        variants={fadeInUp}
+                                        custom={2.5}
+                                    >
+                                        <div className="flex -space-x-4">
+                                            {IMAGES.models.map((model, i) => (
+                                                <motion.img
+                                                    key={i}
+                                                    src={model}
+                                                    alt={`Happy customer ${i}`}
+                                                    className="w-12 h-12 rounded-full border-2 border-white shadow-md"
+                                                    whileHover={{ scale: 1.1, zIndex: 20 }}
+                                                    transition={{ type: "spring", stiffness: 300 }}
+                                                />
                                             ))}
-                                            <span className="ml-2 text-sm">5.0 (2.4k reviews)</span>
                                         </div>
-                                    </div>
+                                        <div style={{ color: COLORS.neutral.dark }}>
+                                            <p className="font-medium">Loved by 10,000+ customers</p>
+                                            <div className="flex items-center mt-1">
+                                                {[...Array(5)].map((_, i) => (
+                                                    <svg key={i} className="w-5 h-5" style={{ color: COLORS.accent }} fill="currentColor" viewBox="0 0 20 20">
+                                                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                                                    </svg>
+                                                ))}
+                                                <span className="ml-2 text-sm">5.0 (2.4k reviews)</span>
+                                            </div>
+                                        </div>
+                                    </motion.div>
                                 </motion.div>
-                            </motion.div>
-                        </div>
+                            </div>
 
-                        {/* Image Gallery */}
-                        <div className="opacity-50 sm:opacity-100">
-                            <div className="mr-4 absolute md:relative left-0">
-                                <div className="pointer-events-none lg:inset-y-0 lg:mx-auto lg:w-full lg:max-w-7xl">
-                                    <div className="transform sm:top-0 sm:left-1/2 sm:translate-x-8 lg:top-1/2 lg:left-1/2 lg:translate-x-8 lg:-translate-y-1/2">
-                                        <div className="flex items-center h-100 space-x-6 lg:space-x-8">
+                            {/* Image Gallery */}
+                            <div className="opacity-50 sm:opacity-100">
+                                <div className="mr-4 absolute md:relative left-0">
+                                    <div className="pointer-events-none lg:inset-y-0 lg:mx-auto lg:w-full lg:max-w-7xl">
+                                        <div className="transform sm:top-0 sm:left-1/2 sm:translate-x-8 lg:top-1/2 lg:left-1/2 lg:translate-x-8 lg:-translate-y-1/2">
+                                            <div className="flex items-center h-100 space-x-6 lg:space-x-8">
 
-                                            {/* Column 1 */}
-                                            <motion.div
-                                                className="grid animate-scroll-up shrink-0 grid-cols-1 gap-y-6 lg:gap-y-8"
-                                                variants={containerVariant}
-                                                initial="hidden"
-                                                animate="visible"
-                                            >
-                                                {images.map((item, index) => (
-                                                    <motion.div
-                                                        key={index}
-                                                        className="h-64 w-44 border-white/70 border-2 overflow-hidden shadow-xl shadow-black/70 rounded-lg"
-                                                        variants={imageVariant}
-                                                    >
-                                                        <img alt="" src={item} className="size-full object-cover" />
-                                                    </motion.div>
-                                                ))}
-                                            </motion.div>
+                                                {/* Column 1 */}
+                                                <motion.div
+                                                    className="grid animate-scroll-up shrink-0 grid-cols-1 gap-y-6 lg:gap-y-8"
+                                                    variants={containerVariant}
+                                                    initial="hidden"
+                                                    animate="visible"
+                                                >
+                                                    {images.map((item, index) => (
+                                                        <motion.div
+                                                            key={index}
+                                                            className="h-64 w-44 border-white/70 border-2 overflow-hidden shadow-xl shadow-black/70 rounded-lg"
+                                                            variants={imageVariant}
+                                                        >
+                                                            <img alt="" src={item} className="size-full object-cover" />
+                                                        </motion.div>
+                                                    ))}
+                                                </motion.div>
 
-                                            {/* Column 2 */}
-                                            <motion.div
-                                                className="grid shrink-0 grid-cols-1 animate-scroll-down gap-y-6 lg:gap-y-8"
-                                                variants={containerVariant}
-                                                initial="hidden"
-                                                animate="visible"
-                                            >
-                                                {images.map((item, index) => (
-                                                    <motion.div
-                                                        key={index}
-                                                        className="h-64 w-44 border-white/70 border-2 overflow-hidden shadow-xl shadow-black/70 rounded-lg"
-                                                        variants={imageVariant}
-                                                    >
-                                                        <img alt="" src={item} className="size-full object-cover" />
-                                                    </motion.div>
-                                                ))}
-                                            </motion.div>
+                                                {/* Column 2 */}
+                                                <motion.div
+                                                    className="grid shrink-0 grid-cols-1 animate-scroll-down gap-y-6 lg:gap-y-8"
+                                                    variants={containerVariant}
+                                                    initial="hidden"
+                                                    animate="visible"
+                                                >
+                                                    {images.map((item, index) => (
+                                                        <motion.div
+                                                            key={index}
+                                                            className="h-64 w-44 border-white/70 border-2 overflow-hidden shadow-xl shadow-black/70 rounded-lg"
+                                                            variants={imageVariant}
+                                                        >
+                                                            <img alt="" src={item} className="size-full object-cover" />
+                                                        </motion.div>
+                                                    ))}
+                                                </motion.div>
 
-                                            {/* Column 3 */}
-                                            <motion.div
-                                                className="grid shrink-0 grid-cols-1 animate-scroll-up gap-y-6 lg:gap-y-8"
-                                                variants={containerVariant}
-                                                initial="hidden"
-                                                animate="visible"
-                                            >
-                                                {images.map((item, index) => (
-                                                    <motion.div
-                                                        key={index}
-                                                        className="h-64 w-44 border-white/70 border-2 overflow-hidden shadow-xl shadow-black/70 rounded-lg"
-                                                        variants={imageVariant}
-                                                    >
-                                                        <img alt="" src={item} className="size-full object-cover" />
-                                                    </motion.div>
-                                                ))}
-                                            </motion.div>
+                                                {/* Column 3 */}
+                                                <motion.div
+                                                    className="grid shrink-0 grid-cols-1 animate-scroll-up gap-y-6 lg:gap-y-8"
+                                                    variants={containerVariant}
+                                                    initial="hidden"
+                                                    animate="visible"
+                                                >
+                                                    {images.map((item, index) => (
+                                                        <motion.div
+                                                            key={index}
+                                                            className="h-64 w-44 border-white/70 border-2 overflow-hidden shadow-xl shadow-black/70 rounded-lg"
+                                                            variants={imageVariant}
+                                                        >
+                                                            <img alt="" src={item} className="size-full object-cover" />
+                                                        </motion.div>
+                                                    ))}
+                                                </motion.div>
 
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </motion.div>
+                    </div>
+
+                    {/* Scrolling banner at bottom */}
+                    <motion.div
+                        className="absolute bottom-0 left-0 right-0 z-50 py-4 overflow-hidden"
+                        style={{ backgroundColor: COLORS.neutral.medium }}
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ delay: 1.5 }}
+                    >
+                        <motion.div
+                            className="flex whitespace-nowrap"
+                            animate={{
+                                x: ["0%", "-100%"],
+                            }}
+                            transition={{
+                                duration: 30,
+                                repeat: Infinity,
+                                ease: "linear"
+                            }}
+                        >
+                            {[...Array(8)].map((_, i) => (
+                                <div key={i} className="inline-flex items-center mx-8">
+                                    <span className="text-lg font-medium mx-4" style={{ color: COLORS.primary.dark }}>✦</span>
+                                    <span className="text-lg font-medium" style={{ color: COLORS.neutral.dark }}>New Arrivals</span>
+                                    <span className="text-lg font-medium mx-4" style={{ color: COLORS.primary.dark }}>✦</span>
+                                    <span className="text-lg font-medium" style={{ color: COLORS.neutral.dark }}>Summer Sale</span>
+                                    <span className="text-lg font-medium mx-4" style={{ color: COLORS.primary.dark }}>✦</span>
+                                    <span className="text-lg font-medium" style={{ color: COLORS.neutral.dark }}>Limited Edition</span>
+                                </div>
+                            ))}
+                        </motion.div>
                     </motion.div>
                 </div>
-
-                {/* Scrolling banner at bottom */}
-                <motion.div
-                    className="absolute bottom-0 left-0 right-0 z-50 py-4 overflow-hidden"
-                    style={{ backgroundColor: COLORS.neutral.medium }}
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 1.5 }}
-                >
-                    <motion.div
-                        className="flex whitespace-nowrap"
-                        animate={{
-                            x: ["0%", "-100%"],
-                        }}
-                        transition={{
-                            duration: 30,
-                            repeat: Infinity,
-                            ease: "linear"
-                        }}
-                    >
-                        {[...Array(8)].map((_, i) => (
-                            <div key={i} className="inline-flex items-center mx-8">
-                                <span className="text-lg font-medium mx-4" style={{ color: COLORS.primary.dark }}>✦</span>
-                                <span className="text-lg font-medium" style={{ color: COLORS.neutral.dark }}>New Arrivals</span>
-                                <span className="text-lg font-medium mx-4" style={{ color: COLORS.primary.dark }}>✦</span>
-                                <span className="text-lg font-medium" style={{ color: COLORS.neutral.dark }}>Summer Sale</span>
-                                <span className="text-lg font-medium mx-4" style={{ color: COLORS.primary.dark }}>✦</span>
-                                <span className="text-lg font-medium" style={{ color: COLORS.neutral.dark }}>Limited Edition</span>
-                            </div>
-                        ))}
-                    </motion.div>
-                </motion.div>
             </div>
         </>
     );

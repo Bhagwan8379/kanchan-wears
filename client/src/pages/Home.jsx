@@ -14,14 +14,58 @@ import {
 
 
 const Home = () => {
+    const phoneNumber = "+919309775035";
+    const message = "Hi there! 👋 I'm reaching out to inquire about your shop services. Could you please provide more details? 😊";
+
+    const sendWhatsAppMessage = () => {
+        const encodedMsg = encodeURIComponent(message);
+        const url = `https://wa.me/${phoneNumber}?text=${encodedMsg}`;
+        window.open(url, "_blank");
+
+
+
+    };
     return (
         <>
+            {/* Floating CTA */}
+            <motion.div
+                initial={{ y: 100, opacity: 0 }}
+                animate={{ y: 0, opacity: 1 }}
+                transition={{ delay: 0.5 }}
+                className="fixed bottom-6 right-6 z-50"
+            >
+                <motion.button
+                    whileHover={{ scale: 1.05, backgroundColor: "#EC4899" }}
+                    whileTap={{ scale: 0.95 }}
+                    className="bg-indigo-600 text-white p-3 rounded-full shadow-lg flex items-center justify-center"
+                    aria-label="Need help?"
+                >
+                    <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        className="h-6 w-6 cursor-pointer"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                        onClick={sendWhatsAppMessage}
+                    >
+                        <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth={2}
+                            d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"
+                        />
+                    </svg>
+
+                </motion.button>
+            </motion.div>
+
             <Carousel />
             <Categories />
             <Videos />
             <About />
             <Social />
             <Footer />
+
         </>
     )
 }
@@ -185,47 +229,17 @@ const Carousel = () => {
 
 const Categories = () => {
     const categories = [
-        {
-            id: 1,
-            name: "Sarees",
-            image: "https://i.pinimg.com/1200x/0a/97/33/0a97339223f04cbdd5a27a5cd579d226.jpg",
-        },
-        {
-            id: 2,
-            name: "Kurtis",
-            image: "https://i.pinimg.com/1200x/60/64/f5/6064f5509d60b562189feb2d63fd729b.jpg",
-        },
-        {
-            id: 3,
-            name: "Western Wear",
-            image: "https://i.pinimg.com/1200x/cc/9b/3f/cc9b3fec3d3e57804c0ac731a600be4e.jpg",
-        },
-        {
-            id: 4,
-            name: "Lehengas",
-            image: "https://i.pinimg.com/1200x/25/8f/f9/258ff98f7bf46edbf0d402c0e94ff770.jpg",
-        },
-        {
-            id: 5,
-            name: "Tops & Tunics",
-            image: "https://i.pinimg.com/1200x/fe/71/56/fe7156eacd27f7574cea5e0d52d933bb.jpg",
-        },
-        {
-            id: 6,
-            name: "Party Wear",
-            image: "https://i.pinimg.com/1200x/5a/92/33/5a92339eb9fb4444e70eccb7981f445a.jpg",
-        },
+        { id: 1, name: "Sarees", image: "https://i.pinimg.com/1200x/0a/97/33/0a97339223f04cbdd5a27a5cd579d226.jpg" },
+        { id: 2, name: "Kurtis", image: "https://i.pinimg.com/1200x/60/64/f5/6064f5509d60b562189feb2d63fd729b.jpg" },
+        { id: 3, name: "Western Wear", image: "https://i.pinimg.com/1200x/cc/9b/3f/cc9b3fec3d3e57804c0ac731a600be4e.jpg" },
+        { id: 4, name: "Lehengas", image: "https://i.pinimg.com/1200x/25/8f/f9/258ff98f7bf46edbf0d402c0e94ff770.jpg" },
+        { id: 5, name: "Tops & Tunics", image: "https://i.pinimg.com/1200x/fe/71/56/fe7156eacd27f7574cea5e0d52d933bb.jpg" },
+        { id: 6, name: "Party Wear", image: "https://i.pinimg.com/1200x/5a/92/33/5a92339eb9fb4444e70eccb7981f445a.jpg" },
     ];
 
-    // Animation variants
     const container = {
         hidden: { opacity: 0 },
-        show: {
-            opacity: 1,
-            transition: {
-                staggerChildren: 0.4
-            }
-        }
+        show: { opacity: 1, transition: { staggerChildren: 0.4 } }
     };
 
     const item = {
@@ -237,7 +251,9 @@ const Categories = () => {
         hidden: { opacity: 0, y: -20 },
         show: { opacity: 1, y: 0, transition: { duration: 0.8 } }
     };
-    const navigation = useNavigate()
+
+    const navigation = useNavigate();
+
     return (
         <div id="categories" className="min-h-screen bg-gradient-to-tr from-pink-300 to-white px-6 py-12">
             <motion.div
@@ -278,76 +294,70 @@ const Categories = () => {
                         </motion.div>
                     ))}
                 </motion.div>
+
+                {/* ✅ See All Button */}
+                <div className="flex justify-center mt-10">
+                    <button
+                        onClick={() => navigation("/all-categories")}
+                        className="bg-pink-600 hover:bg-pink-700 justify-center items-center flex text-white font-semibold px-6 py-2 rounded-full shadow-lg transition duration-300"
+                    >
+                        <span>  See All</span>
+                        <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            className="h-5 w-5 animate-pulse"
+                            viewBox="0 0 20 20"
+                            fill="currentColor"
+                        >
+                            <path fillRule="evenodd" d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z" clipRule="evenodd" />
+                        </svg>
+                    </button>
+
+                </div>
             </motion.div>
         </div>
     );
 };
 
 
-{/* Videos */ }
 const Videos = () => {
     const [visibleProducts, setVisibleProducts] = useState(3);
+    const navigate = useNavigate();
 
     const products = [
-        {
-            id: 1,
-            name: "Premium Quality Saree",
-            video: saree,
-            category: "Traditional Wear"
-        },
-        {
-            id: 2,
-            name: "Classic dress ",
-            video: video1,
-            category: "Formal Wear"
-        },
-        {
-            id: 3,
-            name: "Modern Cool Western",
-            video: video2,
-            category: "Outerwear"
-        },
-        {
-            id: 4,
-            name: "Treditional Dresse",
-            video: video3,
-            category: "Accessories"
-        },
-        {
-            id: 5,
-            name: "Trending Dress Pants",
-            video: videos4,
-            category: "Bottoms"
-        },
+        { id: 1, name: "Premium Quality Saree", video: saree, category: "Traditional Wear" },
+        { id: 2, name: "Classic Dress", video: video1, category: "Formal Wear" },
+        { id: 3, name: "Modern Cool Western", video: video2, category: "Outerwear" },
+        { id: 4, name: "Traditional Dress", video: video3, category: "Accessories" },
+        { id: 5, name: "Trending Dress Pants", video: videos4, category: "Bottoms" },
     ];
+
+    // ✅ Adjust visible products based on screen size
+    useEffect(() => {
+        const updateVisible = () => {
+            if (window.innerWidth <= 1020) {
+                setVisibleProducts(4); // Mobile
+            } else {
+                setVisibleProducts(3); // Desktop
+            }
+        };
+
+        updateVisible(); // Run on mount
+        window.addEventListener("resize", updateVisible);
+        return () => window.removeEventListener("resize", updateVisible);
+    }, []);
 
     const previewProducts = products.slice(0, visibleProducts);
 
-    const loadMore = () => {
-        setVisibleProducts(prev => Math.min(prev + 3, products.length));
-    };
+    const SellAll = () => navigate("/all-collection");
 
     const container = {
         hidden: { opacity: 0 },
-        show: {
-            opacity: 1,
-            transition: {
-                staggerChildren: 0.2,
-                delayChildren: 0.3
-            }
-        }
+        show: { opacity: 1, transition: { staggerChildren: 0.2, delayChildren: 0.3 } }
     };
 
     const item = {
         hidden: { opacity: 0, y: 30 },
-        show: {
-            opacity: 1,
-            y: 0,
-            transition: {
-                duration: 0.6,
-                ease: [0.16, 1, 0.3, 1]
-            }
-        }
+        show: { opacity: 1, y: 0, transition: { duration: 0.6, ease: [0.16, 1, 0.3, 1] } }
     };
 
     return (
@@ -359,10 +369,10 @@ const Videos = () => {
                     transition={{ duration: 0.6 }}
                     className="text-center mb-16"
                 >
-                    <h2 className=" md:text-5xl text-xl font-bold text-gray-900 font-serif mb-4">
+                    <h2 className="md:text-5xl text-xl font-bold text-gray-900 font-serif mb-4">
                         Discover <span className="text-rose-600">Collections</span>
                     </h2>
-                    <p className="md:text-lg  text-gray-600 md:max-w-2xl mx-auto">
+                    <p className="md:text-lg text-gray-600 md:max-w-2xl mx-auto">
                         Discover our premium fashion pieces crafted with exceptional quality and timeless design.
                     </p>
                 </motion.div>
@@ -377,13 +387,10 @@ const Videos = () => {
                         <motion.div
                             key={product.id}
                             variants={item}
-                            whileHover={{
-                                y: -8,
-                                transition: { duration: 0.3 }
-                            }}
+                            whileHover={{ y: -8, transition: { duration: 0.3 } }}
                             className="group relative overflow-hidden rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300"
                         >
-                            <div className=" aspect-h-2  overflow-hidden">
+                            <div className="aspect-h-2 overflow-hidden">
                                 <video
                                     autoPlay
                                     loop
@@ -393,14 +400,11 @@ const Videos = () => {
                                     className="sm:w-100 w-auto h-auto sm:h-100 object-cover transform group-hover:scale-105 transition-transform duration-500"
                                 />
                             </div>
-                            <div className="absolute  inset-0 bg-gradient-to-t from-gray-900/70 via-transparent to-transparent md:opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end  p-6">
+                            <div className="absolute inset-0 bg-gradient-to-t from-gray-900/70 via-transparent to-transparent md:opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
                                 <span className="self-start text-rose-400 text-sm font-medium mb-1">
                                     {product.category}
                                 </span>
-                                <h3 className="text-white hidden md:flex text-xl font-semibold mb-2">{product.name}</h3>
-                                <button className="self-start md:mt-2 md:px-4 cursor-pointer md:py-2 md:bg-rose-600 bg-slate-100/30 text-white text-sm font-medium md:rounded-full rounded-xs px-0.5  hover:bg-white hover:text-rose-600 transition-colors duration-300">
-                                    View Details
-                                </button>
+                                <h3 className="text-white text-xl font-semibold mb-2">{product.name}</h3>
                             </div>
                         </motion.div>
                     ))}
@@ -414,27 +418,20 @@ const Videos = () => {
                         className="flex justify-center mt-16"
                     >
                         <button
-                            onClick={loadMore}
+                            onClick={SellAll}
                             className="md:px-8 md:py-3.5 px-3 py-1 bg-rose-400 cursor-pointer hover:bg-rose-600 text-white font-medium rounded-full transition-all duration-300 flex items-center gap-2 group"
                         >
-                            <span>Load More</span>
-                            <svg
-                                xmlns="http://www.w3.org/2000/svg"
-                                className="h-5 w-5 group-hover:translate-y-0.5 transition-transform"
-                                viewBox="0 0 20 20"
-                                fill="currentColor"
-                            >
-                                <path fillRule="evenodd" d="M16.707 10.293a1 1 0 010 1.414l-6 6a1 1 0 01-1.414 0l-6-6a1 1 0 111.414-1.414L9 14.586V3a1 1 0 012 0v11.586l4.293-4.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                            <span>See All</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 animate-pulse" viewBox="0 0 20 20" fill="currentColor">
+                                <path fillRule="evenodd" d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z" clipRule="evenodd" />
                             </svg>
                         </button>
                     </motion.div>
                 )}
             </div>
         </section>
-    );
-};
-
-
+    )
+}
 
 
 const About = () => {
@@ -803,8 +800,11 @@ const Footer = () => {
         { icon: <MapPin className="md:size-6 size-4" />, text: "Shop A5, Ground Floor, Suyog Complex, N9, Cidco, Sector J1 Plot Number 14 TV Center Chhatrapati Sambhajinar" }
     ];
 
-    const phoneNumber = "+919309775035";
-    const message = "Hi there! 👋 I'm reaching out to inquire about your shop services. Could you please provide more details? 😊";
+
+
+    const navigate = useNavigate()
+    const phoneNumber = "+918379832391";
+    const message = "Hi there! 👋 I'm reaching out to inquire about your Work & services. Could you please provide more details? 😊";
 
     const sendWhatsAppMessage = () => {
         const encodedMsg = encodeURIComponent(message);
@@ -814,9 +814,6 @@ const Footer = () => {
 
 
     };
-
-    const navigate = useNavigate()
-
     return (
         <motion.footer
             initial="hidden"
@@ -930,12 +927,24 @@ const Footer = () => {
                     <p>
                         &copy; {new Date().getFullYear()} Kanchan Wear. All rights reserved.
                     </p>
+                    <p onClick={sendWhatsAppMessage} className=" text-center mt-4 md:mt-0 cursor-pointer">Design By Bhagwan Gire</p>
 
-                    <button
-                        onClick={() => setIsOpen(true)}
-                        className="outline px-2 py-1 cursor-pointer mt-5  md:mt-0 md:hover:bg-gradient-to-r from-indigo-400 to-pink-500 hover:bg-clip-text md:text-transparent rounded-full">Admin</button>
-
-                    <div className="flex space-x-6 mt-4 md:mt-0">
+                    <div className="flex space-x-6 mt-2 md:mt-0">
+                        <button
+                            onClick={() => setIsOpen(true)}
+                            className="outline px-2 hidden  md:flex cursor-pointer 
+                             md:mt-0 md:hover:bg-gradient-to-r
+                              from-indigo-400 to-pink-500
+                               hover:bg-clip-text
+                                md:text-transparent 
+                               rounded-full"
+                        >Admin</button>
+                        <motion.a
+                            href="#"
+                            whileHover={{ color: "#EC4899" }}
+                            className="hover:text-indigo-400 transition-colors"
+                        >
+                        </motion.a>
                         <motion.a
                             href="#"
                             whileHover={{ color: "#EC4899" }}
@@ -960,40 +969,6 @@ const Footer = () => {
                     </div>
                 </motion.div>
             </div>
-
-            {/* Floating CTA */}
-            <motion.div
-                initial={{ y: 100, opacity: 0 }}
-                whileInView={{ y: 0, opacity: 1 }}
-                viewport={{ once: true }}
-                transition={{ delay: 0.5 }}
-                className="fixed bottom-6 right-6 z-50"
-            >
-                <motion.button
-                    whileHover={{ scale: 1.05, backgroundColor: "#EC4899" }}
-                    whileTap={{ scale: 0.95 }}
-                    className="bg-indigo-600 text-white p-3 rounded-full shadow-lg flex items-center justify-center"
-                    aria-label="Need help?"
-                >
-                    <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        className="h-6 w-6 cursor-pointer"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        stroke="currentColor"
-                        onClick={sendWhatsAppMessage}
-                    >
-                        <path
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            strokeWidth={2}
-                            d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"
-                        />
-                    </svg>
-
-                </motion.button>
-            </motion.div>
-
 
             {/* Modal Window  */}
             <AnimatePresence>
