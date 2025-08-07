@@ -1,4 +1,5 @@
 import { Youtube, Instagram, Facebook, MessageCircle } from 'lucide-react';
+import { motion } from 'framer-motion';
 
 const Social = () => {
     const socialPlatforms = [
