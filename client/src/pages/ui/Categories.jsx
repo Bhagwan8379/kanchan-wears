@@ -127,7 +127,7 @@ const Categories = () => {
                         variants={title}
                         className="text-5xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-rose-600 to-fuchsia-600"
                     >
-                        Explore Our Collections
+                        Explore Our Categories
                     </motion.h1>
                     <motion.p
                         variants={title}
