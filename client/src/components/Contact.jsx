@@ -1,7 +1,10 @@
 import { motion } from "framer-motion";
 import { MapPin, Phone, Mail, Clock } from "lucide-react";
+import { useNavigate } from "react-router-dom";
+import { ArrowLeft } from "lucide-react";
 
 const Contact = () => {
+    const navigate = useNavigate();
     const contactInfo = [
         {
             icon: <MapPin className="text-pink-500" size={24} />,
@@ -54,6 +57,15 @@ const Contact = () => {
     return (
         <div className="min-h-screen bg-gradient-to-b from-pink-50 to-white">
             {/* Header */}
+            <div className="px-4 pt-6">
+                <button
+                    onClick={() => navigate(-1)}
+                    className="flex items-center gap-2 text-pink-600 hover:text-pink-800 transition font-medium"
+                >
+                    <ArrowLeft size={20} />
+                    <span>Back</span>
+                </button>
+            </div>
             <motion.div
                 initial={{ y: -50, opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}

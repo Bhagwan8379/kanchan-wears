@@ -16,7 +16,7 @@ app.use(cors({
     credentials: true
 }))
 
-app.use("/api/auth", require("./routes/auth.routes"))
+app.use("/api/v1/auth", require("./routes/auth.routes"))
 
 app.use((req, res) => {
     res.status(404).json({ mesage: "Route Not Found 404" })

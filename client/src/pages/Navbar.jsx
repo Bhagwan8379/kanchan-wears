@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { Heart, User, ShoppingCart, Menu, X, Search, LogIn } from 'lucide-react';
-import logo from '../assets/logo.png';
+import logo from '../assets/logo.jpg';
 
 const Navbar = () => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -44,7 +44,7 @@ const Navbar = () => {
                         <img
                             src={logo}
                             alt="Luxury Brand"
-                            className="h-10 w-10 mr-2"
+                            className="h-10 w-10 mr-2  mix-blend-darken"
                         />
                         <span className="text-2xl font-serif font-bold text-pink-600 tracking-tight">
                             Kanchan<span className="text-gray-800">Wear</span>

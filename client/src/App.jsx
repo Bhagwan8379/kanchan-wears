@@ -13,7 +13,10 @@ import Login from './components/Login'
 import { Toaster } from 'sonner'
 import Contact from './components/Contact'
 import NotFound from './share/NotFound'
-// import Profile from './components/Profile'
+import CustomerProtected from './share/protected/CustomerProtected'
+import AdminProtected from './share/protected/Adminprotected'
+import AdminProfile from './pages/admin/AdminProfile'
+import Products from './pages/Products'
 
 const App = () => {
   return (
@@ -22,15 +25,21 @@ const App = () => {
         <Toaster />
         <Routes>
           <Route path='/' element={<Hero />} />
-          <Route path='/cart' element={<Cart />} />
-          <Route path='/wishlist' element={<Wishlist />} />
-          <Route path='/details' element={<Details />} />
           <Route path='/shop' element={<Layout />} />
-          <Route path='/orderhistory' element={<OrderHistory />} />
-          <Route path='/orderSuccess' element={<OrderSuccess />} />
-          <Route path='/profile' element={<Profile />} />
           <Route path='/login' element={<Login />} />
+          <Route path='/Products' element={<Products />} />
           <Route path='/contact' element={<Contact />} />
+          <Route path='details' element={<Details />} />
+          <Route path='/user' element={<CustomerProtected compo={<Profile />} />} >
+            <Route path='orderhistory' element={<OrderHistory />} />
+            <Route path='orderSuccess' element={<OrderSuccess />} />
+            <Route path='wishlist' element={<Wishlist />} />
+            <Route path='cart' element={<Cart />} />
+          </Route>
+
+          <Route path='admin' element={<AdminProtected compo={<AdminProfile />} />} >
+
+          </Route>
           <Route path='*' element={<NotFound />} />
         </Routes>
       </BrowserRouter>

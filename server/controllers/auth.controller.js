@@ -20,39 +20,17 @@ exports.registerUser = asyncHandler(async (req, res) => {
     if (!validator.isStrongPassword(password)) {
         return res.status(400).json({ message: "Provide Strong Password" })
     }
-    if (!password === cpassword) {
+    if (password !== cpassword) {
         return res.status(400).json({ message: "password and Confirm Password Not Matched" })
     }
+    const isFound = await Auth.findOne({ $or: [{ email: username }, { mobile: username }] })
+    if (isFound) {
+        return res.status(400).json({ message: "User Already Exist" })
+    }
     const hash = await bcrypt.hash(password, 10)
-    await Auth.create({ name, email, mobile, password: hash, cpassword })
+    await Auth.create({ name, email, mobile, password: hash })
     res.json({ message: "User Register Success" })
 })
-
-
-exports.registerAdmin = asyncHandler(async (req, res) => {
-    const { name, email, password, cpassword, mobile } = req.body
-    const { error, isError } = checkEmpty({ name, email, mobile, cpassword, password })
-    if (isError) {
-        return res.status(400).json({ message: "All Fields Required", error })
-    }
-    if (!validator.isEmail(email)) {
-        return res.status(400).json({ message: "Invalid Email" })
-    }
-    if (mobile && !validator.isMobilePhone(mobile, "en-IN")) {
-        return res.status(400).json({ message: "Invalid Mobile Number" })
-    }
-    if (!validator.isStrongPassword(password)) {
-        return res.status(400).json({ message: "Provide Strong Password" })
-    }
-    if (!password === cpassword) {
-        return res.status(400).json({ message: "password and Confirm Password Not Matched" })
-    }
-    const hash = await bcrypt.hash(password, 10)
-    await Auth.create({ name, email, mobile, password: hash, cpassword, role: "admin" })
-    res.json({ message: "Admin Register Success" })
-
-})
-
 
 exports.loginUser = asyncHandler(async (req, res) => {
     const { username, password } = req.body
@@ -79,7 +57,6 @@ exports.loginUser = asyncHandler(async (req, res) => {
 
 })
 
-
 exports.loginAdmin = asyncHandler(async (req, res) => {
     const { username, password } = req.body
     const isFound = await Auth.findOne({ $or: [{ email: username }, { mobile: username }] })
@@ -105,7 +82,6 @@ exports.loginAdmin = asyncHandler(async (req, res) => {
 
 })
 
-
 exports.LogoutUser = asyncHandler(async (req, res) => {
     res.clearCookie("User")
     res.json({ message: "User Logout Success" })
@@ -114,3 +90,29 @@ exports.LogoutAdmin = asyncHandler(async (req, res) => {
     res.clearCookie("Admin")
     res.json({ message: "Admin Logout Success" })
 })
+
+
+
+// exports.registerAdmin = asyncHandler(async (req, res) => {
+//     const { name, email, password, cpassword, mobile } = req.body
+//     const { error, isError } = checkEmpty({ name, email, mobile, cpassword, password })
+//     if (isError) {
+//         return res.status(400).json({ message: "All Fields Required", error })
+//     }
+//     if (!validator.isEmail(email)) {
+//         return res.status(400).json({ message: "Invalid Email" })
+//     }
+//     if (mobile && !validator.isMobilePhone(mobile, "en-IN")) {
+//         return res.status(400).json({ message: "Invalid Mobile Number" })
+//     }
+//     if (!validator.isStrongPassword(password)) {
+//         return res.status(400).json({ message: "Provide Strong Password" })
+//     }
+//     if (password !== cpassword) {
+//         return res.status(400).json({ message: "password and Confirm Password Not Matched" })
+//     }
+//     const hash = await bcrypt.hash(password, 10)
+//     await Auth.create({ name, email, mobile, password: hash, role: "admin" })
+//     res.json({ message: "Admin Register Success" })
+
+// })

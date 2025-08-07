@@ -7,75 +7,67 @@ export const authApi = createApi({
     endpoints: (builder) => {
         return {
             LoginUser: builder.mutation({
-                query: userData => {
-                    return {
-                        url: "/login-user",
-                        method: "POST",
-                        body: userData
+                query: (userData) => ({
+                    url: "/login-user",
+                    method: "POST",
+                    body: userData
+                }),
+                transformResponse: (data) => {
+                    if (data) {
+                        localStorage.setItem("user", JSON.stringify(data.data));
                     }
-                },
-                transformResponse: data => {
-                    localStorage.setItem("user")
-                    return data.result
+                    return data.data;
                 },
                 invalidatesTags: ["auth"]
             }),
 
             LoginAdmin: builder.mutation({
-                query: userData => {
-                    return {
-                        url: "/login-admin",
-                        method: "POST",
-                        body: userData
+                query: (userData) => ({
+                    url: "/login-admin",
+                    method: "POST",
+                    body: userData
+                }),
+                transformResponse: (data) => {
+                    if (data) {
+                        localStorage.setItem("admin", JSON.stringify(data.data));
                     }
-                },
-                transformResponse: data => {
-                    localStorage.setItem("admin")
-                    return data.result
+                    return data.data;
                 },
                 invalidatesTags: ["auth"]
             }),
 
             RegisterUser: builder.mutation({
-                query: userData => {
-                    return {
-                        url: "/register-user",
-                        method: "POST",
-                        body: userData
-                    }
-                },
+                query: (userData) => ({
+                    url: "/register-user",
+                    method: "POST",
+                    body: userData
+                }),
                 invalidatesTags: ["auth"]
             }),
 
             LogoutUser: builder.mutation({
-                query: userData => {
-                    return {
-                        url: "/logout-user",
-                        method: "POST",
-                        body: userData
-                    }
-                },
-                transformResponse: data => {
-                    localStorage.removeItem("user")
-                    return data.result
-                },
-                invalidatesTags: ["auth"]
-            }),
-            LogoutAdmin: builder.mutation({
-                query: userData => {
-                    return {
-                        url: "/logout-admin",
-                        method: "POST",
-                        body: userData
-                    }
-                },
-                transformResponse: data => {
-                    localStorage.removeItem("admin")
-                    return data.result
+                query: () => ({
+                    url: "/logout-user",
+                    method: "POST"
+                }),
+                transformResponse: (data) => {
+                    localStorage.removeItem("user");
+                    return data.data;
                 },
                 invalidatesTags: ["auth"]
             }),
 
+            LogoutAdmin: builder.mutation({
+                query: () => ({
+                    url: "/logout-admin",
+                    method: "POST"
+                }),
+                transformResponse: (data) => {
+                    localStorage.removeItem("admin");
+                    return data.data;
+                },
+                invalidatesTags: ["auth"]
+            }),
         }
     }
 })
@@ -86,4 +78,4 @@ export const {
     useLoginUserMutation,
     useLogoutAdminMutation,
     useLogoutUserMutation
-} = authApi
+} = authApi;
